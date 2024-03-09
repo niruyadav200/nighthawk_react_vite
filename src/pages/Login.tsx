@@ -64,7 +64,7 @@ const Login: FC<LoginProps> = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 col-sm-12 col-md-6">
-            <div className="login_info">
+            <div className="login_info regform">
               <form onSubmit={handleSubmit}>
                 <h2 className="log-title">Log In to MAIA</h2>
                 {inputs.map((input) => (

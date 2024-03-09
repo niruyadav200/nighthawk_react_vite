@@ -362,3 +362,22 @@ nav.navbar.navbar-expand-lg.bg-body {
       min-height: auto;
   }
 }
+.regform input {
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+
+.regform span {
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+  display: none;
+}
+
+.regform input:invalid[focused="true"] {
+  border: 1px solid red;
+}
+
+.regform input:invalid[focused="true"] ~ span {
+  display: block;
+}
