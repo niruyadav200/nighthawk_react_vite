@@ -2,6 +2,7 @@ import { FC, useState, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import SocialMedia from '../components/SocialMedia';
+import { useAuth } from '../commons/use-auth';
 
 
 interface LoginProps {}
@@ -16,10 +17,12 @@ interface Input {
 }
 
 const Login: FC<LoginProps> = () => {
+  const auth = useAuth();
   const [values, setValues] = useState<{ email: string; password: string; [key: string]: string;}>({
     email: '',
     password: '',
   });
+  
 
   const inputs: Input[] = [
     {
@@ -40,8 +43,16 @@ const Login: FC<LoginProps> = () => {
     },
   ];
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formdata = new FormData(event.currentTarget);
+    const user = String(formdata.get("email")).toLowerCase();
+    const pass = String(formdata.get("password"));
+    console.log({user, pass, auth})
+    auth.signin(user, pass)
+      .then((data: Response) => {
+        console.log(data)
+      })
   };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -4,14 +4,15 @@ import Register from './pages/Register';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from './pages/Login';
+import { ProvideAuth } from './commons/use-auth';
 
 
 const Layout: FC = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   );
 };
@@ -30,7 +31,9 @@ const router = createBrowserRouter([
 const App: FC = () => {
   return (
     <>
-      <RouterProvider router={router} />
+      <ProvideAuth>
+        <RouterProvider router={router} />
+      </ProvideAuth>
     </>
   );
 };
