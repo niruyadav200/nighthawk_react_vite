@@ -13,7 +13,7 @@ function MyProfileModal({
     <>
       <Modal show={show} onHide={handleClose} className="modal-lg">
         <Modal.Header closeButton>
-          <Modal.Title>My Profile</Modal.Title>
+          <Modal.Title className="fs-5">My Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <>
