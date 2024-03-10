@@ -1,10 +1,12 @@
 import { useState } from "react";
-import MyProfileModal from "../myProfileModal";
+import MyPopupModal from "../MyPopupModal";
+import MyProfilePopup from "../MyProfilePopup";
 
 const ChatBoxProfile = () => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <article className="chat-profile">
@@ -54,7 +56,9 @@ const ChatBoxProfile = () => {
           </div>
         </div>
       </article>
-      <MyProfileModal show={show} handleClose={handleClose}/>
+      <MyPopupModal show={show} title="My Profile" handleClose={handleClose}>
+        <MyProfilePopup />
+      </MyPopupModal>
     </>
   );
 };
