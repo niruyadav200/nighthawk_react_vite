@@ -1,5 +1,5 @@
-import { FC, useState, ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import SocialMedia from '../components/SocialMedia';
 import { useAuth } from '../commons/use-auth';
@@ -16,14 +16,20 @@ interface Input {
   required: boolean;
 }
 
-const Login: FC<LoginProps> = () => {
-  const auth = useAuth();
+const Login: FC<LoginProps> = () => {  
   const [values, setValues] = useState<{ email: string; password: string; [key: string]: string;}>({
     email: '',
     password: '',
   });
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const isAuthenticated = auth.user && auth.user.isAuthorized;
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/chat");
+    }
+  }, [navigate, isAuthenticated]);
   
-
   const inputs: Input[] = [
     {
       id: 1,
