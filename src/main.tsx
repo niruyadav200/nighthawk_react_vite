@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './scss/styles.scss'
+import './assets/fonts/font.css'
+import './index.css'
+
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Import our custom CSS

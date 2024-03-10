@@ -4,7 +4,7 @@ interface FormInputProps {
   label: string;
   errorMessage: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  id: Number;
+  id: number;
   [key: string]: any;
 }
 

@@ -20,12 +20,12 @@ export const giveFeedback = async(
     })
   }
   try {
-    var resp = await fetch(API_http + "/feedback", options)
+    const resp = await fetch(API_http + "/feedback", options)
     if (!resp.ok) {
       const data = await resp.text();
       throw Error (`Error: ${resp.status}, ${data}`);
     } 
-    var data = await resp.json();
+    const data = await resp.json();
     return data;
   } catch (err) {
     throw err;
@@ -39,22 +39,23 @@ export const voteForAnswer = async (
   vote: string, // vote types -> neutral, thumbs_up, thumbs_down
   headers: Record<string, string>,
 ) => {
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({
-      email: email,
-      timestamp: timestamp,
-      vote: vote,
-    })
-  }
+
   try {
-    var resp  = await fetch(API_http + "/chat-vote", options);
+    const options = {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        email: email,
+        timestamp: timestamp,
+        vote: vote,
+      })
+    }
+    const resp  = await fetch(API_http + "/chat-vote", options);
     if (!resp.ok) {
       const data = await resp.text();
       throw Error(`Error: ${resp.status},${data}`);
     }
-    var data = await resp.json();
+    const data = await resp.json();
     return data;
   } catch (err) {
     throw err;
@@ -82,12 +83,12 @@ export const getAnswer = async (
     }),
   };
   try {
-    var resp = await fetch(API_http + "/chat", options);
+    const resp = await fetch(API_http + "/chat", options);
     if (!resp.ok) {
       const data = await resp.text();
       throw Error(`Error: ${resp.status},${data}`);
     }
-    var data = await resp.json();
+    const data = await resp.json();
     return data;
   } catch (err) {
     throw err;
@@ -104,14 +105,14 @@ export const loginAuth = async (email: string, password: string) => {
     body: JSON.stringify({ email: email, password: password }),
   };
   try {
-    var resp = await fetch(API_http + "/login", options);
+    const resp = await fetch(API_http + "/login", options);
     if (!resp.ok) {
       console.log("resp.ok");
       const data = await resp.json();
 
       throw Error(`Error: ${resp.status},${data.msg}`);
     }
-    var data = await resp.json();
+    const data = await resp.json();
     data["email"] = email;
     return data;
   } catch (err) {
@@ -137,13 +138,13 @@ export const registerAuth = async (
     }),
   };
   try {
-    var resp = await fetch(API_http + "/register", options);
+    const resp = await fetch(API_http + "/register", options);
     console.log("Resp is ", resp);
     if (!resp.ok) {
       const data = await resp.json();
       throw Error(`Error: ${resp.status},${data.message}`);
     }
-    var data = await resp.json();
+    const data = await resp.json();
     console.log("Register returns ", data);
     return data;
   } catch (err) {
